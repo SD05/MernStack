@@ -12,7 +12,7 @@ const protect = asyncHandler(async (req, res, next) => {
       // Get token from header
       token = req.headers.authorization.split(" ")[1];
 
-      //Verify Token
+      // Verify Token
       const decode = jwt.verify(token, process.env.JWT_SECRET || "abc123");
 
       // Get user from the token
