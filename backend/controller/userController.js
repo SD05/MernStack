@@ -11,7 +11,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (!name || !email || !password) {
     res.status(400);
-    throw new Error("Please add all fiels");
+    throw new Error("Please add all fields");
   }
 
   // Check if user exists
@@ -71,12 +71,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route  GET /api/users/me
 // @access Private
 const getMe = asyncHandler(async (req, res) => {
-  const { _id, name, email } = await User.findById(req.user.id);
-  res.status(200).json({
-    id: _id,
-    name,
-    email,
-  });
+  res.status(200).json(req.user);
 });
 
 // Generate JWT
