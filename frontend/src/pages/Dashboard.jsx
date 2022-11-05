@@ -12,12 +12,11 @@ function Dashboard() {
 
   const { user } = useSelector((state) => state.auth);
 
-  const { goals, isLoading, isError, message } = useSelector((state) => state.goal);
+  const { goals, isLoading, isError, message } = useSelector((state) => state.goals);
 
   useEffect(() => {
     if (isError) {
       console.log(message);
-      dispatch(reset());
     }
     if (!user) {
       navigate("/login");
@@ -50,7 +49,7 @@ function Dashboard() {
             ))}
           </div>
         ) : (
-          <h3> You have not set any goals</h3>
+          <h3>You have not set any goals</h3>
         )}
       </section>
     </>
