@@ -12,7 +12,9 @@ function Dashboard() {
 
   const { user } = useSelector((state) => state.auth);
 
-  const { goals, isLoading, isError, message } = useSelector((state) => state.goals);
+  const { goals, isLoading, isError, message } = useSelector(
+    (state) => state.goals
+  );
 
   useEffect(() => {
     if (isError) {
@@ -20,9 +22,9 @@ function Dashboard() {
     }
     if (!user) {
       navigate("/login");
+    } else {
+      dispatch(getGoals());
     }
-
-    dispatch(getGoals());
 
     return () => {
       dispatch(reset());
